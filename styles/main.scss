@@ -1,13 +1,17 @@
 @import 'bourbon/bourbon';
 @import 'neat/neat';
 
-$max-width: 80%;
+$max-width: 90%;
 $tab-height: 50px;
+$menu-line-height: 1.2em;
 
 
 $primary-color: teal;
 $secondary-color: navy;
 $highlight-color: red;
+$button-text-color: white;
+
+$button-font-size: 1em;
 
 /*************************
   basic/neat styling below
@@ -18,9 +22,17 @@ body {
   padding: 0;
 }
 
+a, li, ul, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
 .neat-container {
   @include outer-container;
   width: $max-width;
+  margin-bottom: 40px;
 
 }
 
@@ -34,8 +46,15 @@ body {
 
 }
 
-.last-tab {
+.menu-header-ul li:last-child {
   @include omega();
+}
+
+.appetizers {
+  padding: 1%;
+  border-right: 3px solid $primary-color;
+  border-bottom: 3px solid $primary-color;
+  border-left: 3px solid $primary-color;
 }
 
 .page-heading {
@@ -110,7 +129,7 @@ nav {
   Menu Below
   *********************/
 
-.tabs li {
+.menu-header-ul li {
   display: inline-block;
   text-align: center;
   height: $tab-height;
@@ -132,21 +151,96 @@ nav {
 
 .menu-subtitle {
   display: inline-block;
+  margin: 5px;
+  padding: 5px;
   font-size: 1em;
 }
 
 .heading-order {
-  position: absolute;
-  left: 1%;
+  position: relative;
+  left: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .heading-item {
-  position: absolute;
+  position: relative;
   left: 30%;
 }
 
 .heading-price {
   position: absolute;
-  right: 5%;
+  right: 0;
 }
+
+.order-button,
+.food-item,
+.food-price {
+  display: inline-block;
+}
+
+.order-button {
+width: 10%;
+margin-left: 1%;
+}
+
+.food-item,
+.foodDesc {
+  width: 80%;
+}
+
+.foodDesc {
+  width: 70%;
+  margin-left: 14%;
+  font-size: 0.8em;
+  font-family: cursive;
+}
+
+.tabs {
+  margin-bottom: 50px;
+}
+
+/********************
+    Order View Code Below
+**********************/
+
+
+.item-qty,
+.order-item,
+.order-item-price {
+  display: inline-block;
+}
+
+.item-qty {
+  width: 5%;
+
+}
+
+.order-item {
+  width: 75%;
+  margin-left: 10%;
+}
+
+.order-item-price {
+  width: 5%;
+}
+
+.order-total {
+  margin-top: 20px;
+  margin-left: 80%;
+}
+
+.submit-order {
+  display: block;
+  margin: 10px auto;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  background: $primary-color;
+  color: $button-text-color;
+  font-size: $button-font-size;
+}
+
+
+
 

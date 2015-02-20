@@ -49,13 +49,15 @@
   </div> -->
 
   <div class="tabs row">
-    <ul class="row">
+    <ul class="row menu-header-ul">
       <li class="tab tab1">Appetizers</li><li class="tab">
       Entree</li><li class="tab">
       Salads</li><li class="tab">
-      Sides etc.</li><li class="tab">
+      Sides</li><li class="tab">
       Desserts</li><li class="tab last-tab">
       Kids</li>
+
+    </ul>
 
 
   <div class="js-appetizers appetizers menu-cat row">
@@ -64,6 +66,24 @@
       <h4 class="menu-subtitle heading-item">Item</h4>
       <h4 class="menu-subtitle heading-price">Price</h4>
     </div><!-- .menu-header-wrap -->
+
+    <ul class="js-menu-ul menu-ul row">
+
+    <li>
+      <input type="checkbox" id="order-button" class="menu-line
+      order-button">
+      <h3 class="food-item js-food-item">
+        Wings</h3>
+      <h3 class="js-food-price food-price">
+        8</h3>
+        <div class="divider"></div>
+        <h3 class="foodDesc js-foodDesc">
+          Traditional bone in wings; mild, medium or hot. Served with celery and blue cheese dressing</h3>
+      </li>
+
+
+
+    </ul>
 
   </div><!-- .js-appetizers -->
 
@@ -75,9 +95,60 @@
 
  </div><!-- .tabs -->
 
+<!-- ******************
+    Order Code Below
+******************** -->
+
+
+
+
+
+
+
+
+<div class="menu-header-wrap order-wrap">
+<h1 class="page-heading order-page-heading">
+  Your Order
+  </h1>
+
+    <h4 class="menu-subtitle heading-qty">Qty</h4>
+    <h4 class="menu-subtitle heading-item">Item</h4>
+    <h4 class="menu-subtitle heading-price js-order-price order-price">Price</h4>
+  </div><!-- .menu-header-wrap -->
+
+    <ul class-"order-wrap js-order-wrap">
+      <li>
+        <input type="number" value="1" class="js-item-qty item-qty" min="0">
+        <h3 class="order-item js-order-item">
+        Wings</h3>
+      <h3 class="js-order-item-price order-item-price">
+        8</h3>
+
+      </li>
+
+    </ul>
+
+    <h3 class="js-order-total order-total">
+      total: <span class='js-order-total-text order-total-text'>8</span>
+      </h3>
+    <button type="submit" class="submit-order js-submit-order">Place Order</button>
+
+
+
+
+
+
+
+
+
 <script type="text/template" id="menu-template">
 
 
+
+
+</script>
+
+<script type="text/template" id="order-template">
 
 </script>
 

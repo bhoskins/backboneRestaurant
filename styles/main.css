@@ -15,11 +15,18 @@ body {
   margin: 0 auto;
   padding: 0; }
 
+a, li, ul, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none; }
+
 .neat-container {
-  max-width: 80%;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
-  width: 80%; }
+  width: 90%;
+  margin-bottom: 40px; }
   .neat-container::after {
     clear: both;
     content: "";
@@ -36,8 +43,14 @@ body {
 .tab {
   width: 16%; }
 
-.last-tab {
+.menu-header-ul li:last-child {
   margin-right: 0; }
+
+.appetizers {
+  padding: 1%;
+  border-right: 3px solid teal;
+  border-bottom: 3px solid teal;
+  border-left: 3px solid teal; }
 
 .page-heading {
   text-align: center;
@@ -69,7 +82,7 @@ body {
 
 nav {
   position: relative;
-  max-width: 80%; }
+  max-width: 90%; }
 
 .nav-ul li {
   color: navy; }
@@ -98,7 +111,7 @@ nav {
 /**********************
   Menu Below
   *********************/
-.tabs li {
+.menu-header-ul li {
   display: inline-block;
   text-align: center;
   height: 50px;
@@ -118,18 +131,76 @@ nav {
 
 .menu-subtitle {
   display: inline-block;
+  margin: 5px;
+  padding: 5px;
   font-size: 1em; }
 
 .heading-order {
-  position: absolute;
-  left: 1%; }
+  position: relative;
+  left: 0;
+  margin: 0;
+  padding: 0; }
 
 .heading-item {
-  position: absolute;
+  position: relative;
   left: 30%; }
 
 .heading-price {
   position: absolute;
-  right: 5%; }
+  right: 0; }
+
+.order-button,
+.food-item,
+.food-price {
+  display: inline-block; }
+
+.order-button {
+  width: 10%;
+  margin-left: 1%; }
+
+.food-item,
+.foodDesc {
+  width: 80%; }
+
+.foodDesc {
+  width: 70%;
+  margin-left: 14%;
+  font-size: 0.8em;
+  font-family: cursive; }
+
+.tabs {
+  margin-bottom: 50px; }
+
+/********************
+    Order View Code Below
+**********************/
+.item-qty,
+.order-item,
+.order-item-price {
+  display: inline-block; }
+
+.item-qty {
+  width: 5%; }
+
+.order-item {
+  width: 75%;
+  margin-left: 10%; }
+
+.order-item-price {
+  width: 5%; }
+
+.order-total {
+  margin-top: 20px;
+  margin-left: 80%; }
+
+.submit-order {
+  display: block;
+  margin: 10px auto;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  background: teal;
+  color: white;
+  font-size: 1em; }
 
 /*# sourceMappingURL=main.css.map */
