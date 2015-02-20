@@ -1,0 +1,152 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+
+$max-width: 80%;
+$tab-height: 50px;
+
+
+$primary-color: teal;
+$secondary-color: navy;
+$highlight-color: red;
+
+/*************************
+  basic/neat styling below
+**************************/
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.neat-container {
+  @include outer-container;
+  width: $max-width;
+
+}
+
+.row {
+  @include span-columns(12);
+
+}
+
+.tab {
+  width: 16%;
+
+}
+
+.last-tab {
+  @include omega();
+}
+
+.page-heading {
+  text-align: center;
+  color: $secondary-color;
+  margin: 10px;
+  padding: 5px;
+}
+
+.filter-heading {
+  margin: 0;
+  padding: 5px;
+}
+
+.filter-heading:hover {
+  cursor: hand;
+}
+
+.header-title,
+.header-subtitle {
+  margin: 0;
+  padding: 0;
+  color: teal;
+  text-align: center;
+}
+
+.header-title {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.header-subtitle {
+  font-size: 1em;
+  font-family: cursive;
+}
+
+nav {
+  position: relative;
+  max-width: $max-width;
+}
+.nav-ul li {
+  color: $secondary-color;
+}
+
+.nav-ul,
+.secondary-nav {
+  display: inline-block;
+}
+
+.nav-ul li,
+.secondary-nav li {
+  list-style: none;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+
+}
+
+.secondary-nav {
+  position: absolute;
+  right: 10px;
+  margin-left: 50px;
+  color: $highlight-color;
+}
+
+.secondary-nav li:first-child {
+  border-right: 1px solid $secondary-color;
+  padding-right: 10px;
+}
+
+/**********************
+  Menu Below
+  *********************/
+
+.tabs li {
+  display: inline-block;
+  text-align: center;
+  height: $tab-height;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top: 3px solid $primary-color;
+  border-right: 3px solid $primary-color;
+  border-left: 3px solid $primary-color;
+  color: $secondary-color;
+  vertical-align: top;
+  line-height: $tab-height;
+}
+
+.menu-header-wrap {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-subtitle {
+  display: inline-block;
+  font-size: 1em;
+}
+
+.heading-order {
+  position: absolute;
+  left: 1%;
+}
+
+.heading-item {
+  position: absolute;
+  left: 30%;
+}
+
+.heading-price {
+  position: absolute;
+  right: 5%;
+}
+

@@ -1,0 +1,278 @@
+Notes 2.20 Friday
+Authorization on Parse
+
+rest means resources verses endpoints
+  use four things crud; backbone good at this
+  save, fetch, destroy; post, get, put, delete
+
+Parse uses classes;  using ajax instead of backbone
+  but in a way still with backbone.
+
+You can override sync but whats the point of backbone.
+  can write your own sync function
+
+@@@@@@@@@ sign up or log in on parse with toots
+
+hammock
+closure;
+See wireframe in pencil;
+  2 models: user, session
+  3 views;
+    /  index
+    /login
+    /signup
+
+index.html with 3 templates
+
+<div class="app-container"
+
+<script #index-template
+  <h1>Hello Jason
+<script #login-template
+  <input type="email" class="js-email"
+  <input type: password class .js-password
+  <inpubt type="submit"
+
+<script #signup-template
+
+
+
+
+main.js
+make router:
+var AppRouter
+  routes
+    "": 'index',
+    'login'
+    'signup'
+
+  index: funciton
+    var template = _.template( $('#index-template').text())
+    $('.app-container').html(template())
+  login:
+  signup:
+
+$(document).ready(function(){
+  make router
+  B.h.start()
+})
+
+Make Views:
+var IndexView, SignupView, LoginView
+change routes with this.currentView
+  and add render
+Add render: to views
+
+move templates from router to views:
+var SignUpVies = B.V.ex
+  template: template=_.template....
+  render:
+    this.$el.html(this.template())
+    return this
+
+
+in routes
+  index: function
+    this.currentView = new IndexVies()
+    this.currentView.render()
+    $('#app-continer').html
+
+Models:
+var Session = B.M.ex
+  defaults:
+    token: ''
+
+  !!""   coerce to value
+
+initialize: function
+  this.session = new Session()
+
+routes/
+  index:
+  if(this.session.isLoggedIn()) {
+    everything in here
+
+  } else {
+    this.navigate('login', (trigger: true))
+  }
+
+  test Session Model:
+  listen, when recieve token redirect
+  in router:
+  initialize:
+    this.listenTo(this.session, 'change:token', this.maybeIndex)
+
+  maybeIndex: function(){
+    if(this.sesson.isLoggedIn(){
+      redirect to index
+      this.navigate('', {trigger: true});
+    } else {
+      this.navigate('login', {trigger: true})
+    })
+
+  router.session.set('token', 'cool')
+    to test
+  }
+
+  get working before dealing with server
+
+  git commit -m "Implement session model"
+
+  go to parse:
+    create User class
+      create column:
+        name
+        password:
+
+      parse has forgot password email request
+
+  manually create first user:
+    name = email
+
+get email. send request to parse with ajax
+  if successful, then works
+  if not successful, alert error message
+
+events in login view:
+tagName: form
+  events
+    submit: login
+
+  login: func
+    e.preventDefault()
+    console.log('test')
+    var email = this.$(.js-emil).val()
+    var password = ... .val()
+    console.log to test
+    this.model.login(email, password)
+
+  Where to put ajax request???
+    logically in model, but can drop it in view
+
+    add function to Session model
+      login: func(emial, password){
+        ????
+      }
+
+Go to parse read docs; what to do to log in
+parse/docs; send login request to endpoint
+
+
+$.ajaxSetup({
+    header:
+
+    right before document.ready
+    copy and paste
+})
+
+find login endpiont; set username and password in url
+terrible security
+sends back object with token, etc
+
+var Session = B.M.ex
+  login: funciton(email, password){
+  var self = this;
+    return $.ajax({
+      url: "https://api.parse.com/1/login",
+      data: {
+        username: email.
+        password: password
+      }
+    }).then(funciton(data){
+      console.log to test
+      self.set('token', data.sessionToken);
+      return data;
+    }, function(response){
+      console.error('error', textStatus, jqXHR)
+      alert(jqXHR.responseJSON.error)
+      return jqXHR;
+    })
+  }
+
+  then two param functions
+    on sucess
+      on error
+  jquery then
+
+      look at object to get what
+
+Find our request with token on parse?
+to make requests as the user
+  need to use token so that all requests are from
+    this user not anonymously
+
+Session
+initialize: function
+  this.listenTo(this, 'change:token', this.setHeader);
+
+setHeader: funtion
+  var token = this.get('token')
+  this(token){
+  $.ajaxSetup({
+    headers: {
+      "X-Parse-Session-Token": token
+    }
+  })
+  }
+
+  just empty token; in parse this works
+    some servers will throw and error.
+
+  Create log out:
+  put button in html: js-logout
+
+  IndexView
+  events: {
+    "click -js-logout": 'logout'
+  },
+
+  logout: function
+    App.bus.trigger('logout');
+    vent=bus
+
+    add at top after 'use strict'
+    window.App = window.App || {}
+
+    in document.ready
+    App.router = new AppRouter();
+    App.vent = _.extend({, Backbone.Events});
+
+    Add listener to event:
+
+    logout: function
+      this.set('token', '')
+
+    View sends a signal log out needs to happen
+    Session listens for the signal
+      and then does the work
+        cascades change event.
+
+More logic to have a current user:
+store user data on session as properties of
+  currentUser
+
+create user model:
+var User = B.M.ex({
+    rulRoot: "https://api.parse.com/1/users",
+
+    defaults: {
+      name: ''
+    }
+
+    in then statement
+    var userData = _.omit(data, 'sessionToken')
+    self.set('currentUser', new User(userData));
+
+    in index:
+    var user = this.sesson.get('currentUser');
+      connect user to index route
+
+    In IndexView
+    render:
+
+})
+
+
+
+
+

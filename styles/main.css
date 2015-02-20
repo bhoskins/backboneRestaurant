@@ -1,0 +1,135 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+/*************************
+  basic/neat styling below
+**************************/
+body {
+  margin: 0 auto;
+  padding: 0; }
+
+.neat-container {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%; }
+  .neat-container::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.row {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .row:last-child {
+    margin-right: 0; }
+
+.tab {
+  width: 16%; }
+
+.last-tab {
+  margin-right: 0; }
+
+.page-heading {
+  text-align: center;
+  color: navy;
+  margin: 10px;
+  padding: 5px; }
+
+.filter-heading {
+  margin: 0;
+  padding: 5px; }
+
+.filter-heading:hover {
+  cursor: hand; }
+
+.header-title,
+.header-subtitle {
+  margin: 0;
+  padding: 0;
+  color: teal;
+  text-align: center; }
+
+.header-title {
+  margin-top: 50px;
+  margin-bottom: 10px; }
+
+.header-subtitle {
+  font-size: 1em;
+  font-family: cursive; }
+
+nav {
+  position: relative;
+  max-width: 80%; }
+
+.nav-ul li {
+  color: navy; }
+
+.nav-ul,
+.secondary-nav {
+  display: inline-block; }
+
+.nav-ul li,
+.secondary-nav li {
+  list-style: none;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px; }
+
+.secondary-nav {
+  position: absolute;
+  right: 10px;
+  margin-left: 50px;
+  color: red; }
+
+.secondary-nav li:first-child {
+  border-right: 1px solid navy;
+  padding-right: 10px; }
+
+/**********************
+  Menu Below
+  *********************/
+.tabs li {
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top: 3px solid teal;
+  border-right: 3px solid teal;
+  border-left: 3px solid teal;
+  color: navy;
+  vertical-align: top;
+  line-height: 50px; }
+
+.menu-header-wrap {
+  position: relative;
+  margin: 0;
+  padding: 0; }
+
+.menu-subtitle {
+  display: inline-block;
+  font-size: 1em; }
+
+.heading-order {
+  position: absolute;
+  left: 1%; }
+
+.heading-item {
+  position: absolute;
+  left: 30%; }
+
+.heading-price {
+  position: absolute;
+  right: 5%; }
+
+/*# sourceMappingURL=main.css.map */

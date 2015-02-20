@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8">
+  <title>Restaurant 360</title>
+</head>
+<body>
+  <header>
+    <h1 class="header-title">Restaurant 360</h1>
+    <h2 class="header-subtitle">Eat big and stay healthy 360 days a year</h2>
+    <nav>
+      <ul class="nav-ul">
+        <li>Home</li>
+        <li>Menu</li>
+        <li>Find Us</li>
+        <li>About</li>
+      </ul>
+
+      <ul class="secondary-nav">
+        <li>Sign In</li>
+        <li>Register</li>
+
+      </ul>
+
+    </nav>
+  </header>
+
+  <div class="content-wrap neat-container">
+    <h1 class="page-heading row">Menu</h1>
+    <h3 class="row filter-heading">Filter</h3>
+    <div class='filter-wrap row'>
+    <input type="checkbox" value="glutenFree" id="glutenFree">
+      <label for="glutenFree">Gluten Free</label>
+    <input type="checkbox" value="nutFree" id="nutFree">
+      <label for="nutFree">Nut Free</label>
+    <input type="checkbox" value="dairyFree" id="dairyFree">
+      <label for="dairyFree">Dairy Free</label>
+    <input type="checkbox" value="vegan" id="vegan">
+      <label for="vegan">Vegan</label>
+      </div><!-- .filter-wrap row -->
+
+<!--     <select name="filter" multiple="true" >
+      <option value="glutenFree">Gluten Free</option>
+      <option value="dairyFree">Dairy Free</option>
+      <option value="nutFree">Nut Free</option>
+    </select>
+
+  </div> -->
+
+  <div class="tabs row">
+    <ul class="row">
+      <li class="tab tab1">Appetizers</li><li class="tab">
+      Entree</li><li class="tab">
+      Salads</li><li class="tab">
+      Sides etc.</li><li class="tab">
+      Desserts</li><li class="tab last-tab">
+      Kids</li>
+
+
+  <div class="js-appetizers appetizers menu-cat row">
+    <div class="menu-header-wrap">
+      <h4 class="menu-subtitle heading-order">Order</h4>
+      <h4 class="menu-subtitle heading-item">Item</h4>
+      <h4 class="menu-subtitle heading-price">Price</h4>
+    </div><!-- .menu-header-wrap -->
+
+  </div><!-- .js-appetizers -->
+
+  <div class="menu-cat js-entree entree row"></div>
+  <div class="menu-cat js-salads salads row"></div>
+  <div class="menu-cat js-sides sides row"></div>
+  <div class="menu-cat js-desserts desserts row"></div>
+  <div class="menu-cat js-kids kids row"></div>
+
+ </div><!-- .tabs -->
+
+<script type="text/template" id="menu-template">
+
+
+
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+
+<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+
+
+<script type="text/javascript" src="scripts/main.js"></script>
+</body>
+</html>
