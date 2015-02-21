@@ -20,24 +20,32 @@
       <ul class="secondary-nav">
         <li>Sign In</li>
         <li>Register</li>
-
       </ul>
 
     </nav>
   </header>
 
-  <div class="content-wrap neat-container">
-    <h1 class="page-heading row">Menu</h1>
-    <h3 class="row filter-heading">Filter</h3>
-    <div class='filter-wrap row'>
-    <input type="checkbox" value="glutenFree" id="glutenFree">
-      <label for="glutenFree">Gluten Free</label>
-    <input type="checkbox" value="nutFree" id="nutFree">
-      <label for="nutFree">Nut Free</label>
-    <input type="checkbox" value="dairyFree" id="dairyFree">
-      <label for="dairyFree">Dairy Free</label>
-    <input type="checkbox" value="vegan" id="vegan">
-      <label for="vegan">Vegan</label>
+<!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      Menu Below
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+  <div class="content-wrap menu-wrap js-menu-wrap">
+    <form class="menu-form js-menu-form">
+      <h1 class="page-heading row">Menu</h1>
+
+      <!-- Filter -->
+
+      <h3 class="row filter-heading">Filter</h3>
+
+      <div class='filter-wrap row'>
+        <input type="checkbox" value="glutenFree" id="glutenFree">
+          <label for="glutenFree">Gluten Free</label>
+        <input type="checkbox" value="nutFree" id="nutFree">
+          <label for="nutFree">Nut Free</label>
+        <input type="checkbox" value="dairyFree" id="dairyFree">
+          <label for="dairyFree">Dairy Free</label>
+        <input type="checkbox" value="vegan" id="vegan">
+          <label for="vegan">Vegan</label>
       </div><!-- .filter-wrap row -->
 
 <!--     <select name="filter" multiple="true" >
@@ -48,27 +56,109 @@
 
   </div> -->
 
-  <div class="tabs row">
-    <ul class="row menu-header-ul">
-      <li class="tab tab1">Appetizers</li><li class="tab">
-      Entree</li><li class="tab">
-      Salads</li><li class="tab">
-      Sides</li><li class="tab">
-      Desserts</li><li class="tab last-tab">
-      Kids</li>
+      <div class="tabs row">
+        <ul class="row menu-header-ul">
+          <li class="tab tab1">Appetizers</li><li class="tab">
+          Entree</li><li class="tab">
+          Salads</li><li class="tab">
+          Sides</li><li class="tab">
+          Desserts</li><li class="tab last-tab">
+          Kids</li>
+
+        </ul>
+
+
+      <div class="js-appetizers appetizers menu-cat row">
+        <div class="menu-header-wrap">
+          <h4 class="menu-subtitle heading-order">Order</h4>
+          <h4 class="menu-subtitle heading-item">Item</h4>
+          <h4 class="menu-subtitle heading-price">Price</h4>
+        </div><!-- .menu-header-wrap -->
+
+        <ul class="js-menu-ul menu-ul row">
+
+        </ul>
+
+      </div><!-- .js-appetizers -->
+
+      <div class="menu-cat js-entree entree row"></div>
+      <div class="menu-cat js-salads salads row"></div>
+      <div class="menu-cat js-sides sides row"></div>
+      <div class="menu-cat js-desserts desserts row"></div>
+      <div class="menu-cat js-kids kids row"></div>
+
+     </div><!-- .tabs -->
+
+ </form>
+ </div><!-- .menu-wrap .content-wrap .js-menu-wrap
+
+<!-- ******************
+    Customer Order Code Below
+******************** -->
+
+
+<div class="customer-order-wrap js-customer-order-wrap content-wrap">
+<!-- .menu-header-wrap order-wrap -->
+  <form id="customer-order-form">
+    <h1 class="page-heading your-order-heading">
+      Your Order
+      </h1>
+
+      <h4 class="menu-subtitle heading-qty">Qty</h4>
+      <h4 class="menu-subtitle heading-item">Item</h4>
+      <h4 class="menu-subtitle heading-price js-order-price order-price">Price</h4>
+
+
+      <ul class-"customer-order-ul js-customer-order-ul">
+
+      </ul>
+
+      <h3 class="js-order-total order-total">
+      ---------Subtotal: <span class='js-order-subtotal-text order-subtotal-text'>8</span>
+      </h3>
+        <h3 class="js-order-total order-total">Total (with tax): <span class='js-order-total-text order-total-text'>8.62</span>
+      </h3>
+      <button type="submit" class="submit-order js-submit-order submit-button">Place Order</button>
+
+  </form>
+
+</div><!-- .customer-order-wrap js-customer-order-wrap
+            .content-wrap -->
+
+<!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    Cook-Order Below
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+<div class="content-wrap cook-order-wrap js-cook-order-wrap">
+  <form class="cook-order-form">
+  <h1 class="page-heading cook-order-heading">
+      Customer Order
+      </h1>
+      <h3 class="user-name">Name: </h3>
+
+    <h4 class="menu-subtitle heading-complete">Complete
+    </h4>
+    <h4 class="menu-subtitle heading-item">Item</h4>
+    <h4 class="menu-subtitle heading-time-placed js-time-placed">Time Placed</h4>
+
+
+    <ul class-"cook-order-ul js-cook-order-ul">
 
     </ul>
 
 
-  <div class="js-appetizers appetizers menu-cat row">
-    <div class="menu-header-wrap">
-      <h4 class="menu-subtitle heading-order">Order</h4>
-      <h4 class="menu-subtitle heading-item">Item</h4>
-      <h4 class="menu-subtitle heading-price">Price</h4>
-    </div><!-- .menu-header-wrap -->
+    <button type="submit" class="order-complete js-order-complete submit-button">Order Complete</button>
 
-    <ul class="js-menu-ul menu-ul row">
+       <p class="time-order-completed">Order Complete: 10:40</p>
+  </form>
 
+</div><!-- .content-wrap cook-order-wrap -->
+
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      Templates Below
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+<script type="text/template" id="menu-template">
     <li>
       <input type="checkbox" id="order-button" class="menu-line
       order-button">
@@ -78,78 +168,47 @@
         8</h3>
         <div class="divider"></div>
         <h3 class="foodDesc js-foodDesc">
-          Traditional bone in wings; mild, medium or hot. Served with celery and blue cheese dressing</h3>
+          Traditional bone in wings; mild, medium or hot. Served with celery and blue cheese dressing
+          <div class="js-order-extra order-extra wings-extra">
+            <input type="radio" name="wing-type" value="mild" id="wing-type-mild">
+            <label for="wing-type-mild">Mild</label>
+            <input type="radio" name="wing-type" value="medium" id="wing-type-medium">
+            <label for="wing-type-medium">Medium</label>
+            <input type="radio" name="wing-type" value="hot" id="wing-type-hot">
+            <label for="wing-type-hot">Hot</label>
+          </div>
+          </h3>
       </li>
+</script>
 
 
+<script type="text/template" id="customer-order-template">
+  <li>
+    <input type="number" value="1" class="js-item-qty item-qty" min="0">
+    <h3 class="order-item js-order-item">
+    Wings</h3>
+  <h3 class="js-order-item-price order-item-price">
+    8</h3>
+    <div class="customize-item js-customize-item">
+      <label for="customize-text" class="customize-label">Customize </label>
+      <input type="text" id="customize-input" size="100">
+    </div>
 
-    </ul>
-
-  </div><!-- .js-appetizers -->
-
-  <div class="menu-cat js-entree entree row"></div>
-  <div class="menu-cat js-salads salads row"></div>
-  <div class="menu-cat js-sides sides row"></div>
-  <div class="menu-cat js-desserts desserts row"></div>
-  <div class="menu-cat js-kids kids row"></div>
-
- </div><!-- .tabs -->
-
-<!-- ******************
-    Order Code Below
-******************** -->
+  </li>
+</script>
 
 
-
-
-
-
-
-
-<div class="menu-header-wrap order-wrap">
-<h1 class="page-heading order-page-heading">
-  Your Order
-  </h1>
-
-    <h4 class="menu-subtitle heading-qty">Qty</h4>
-    <h4 class="menu-subtitle heading-item">Item</h4>
-    <h4 class="menu-subtitle heading-price js-order-price order-price">Price</h4>
-  </div><!-- .menu-header-wrap -->
-
-    <ul class-"order-wrap js-order-wrap">
-      <li>
-        <input type="number" value="1" class="js-item-qty item-qty" min="0">
+<script type="text/template" id="cook-order-template">
+        <li>
+        <input type="checkbox" class="js-item-complete item-complete">
         <h3 class="order-item js-order-item">
         Wings</h3>
       <h3 class="js-order-item-price order-item-price">
         8</h3>
+        <p class="customer-comment js-customer-comment">
+        </p>
 
       </li>
-
-    </ul>
-
-    <h3 class="js-order-total order-total">
-      total: <span class='js-order-total-text order-total-text'>8</span>
-      </h3>
-    <button type="submit" class="submit-order js-submit-order">Place Order</button>
-
-
-
-
-
-
-
-
-
-<script type="text/template" id="menu-template">
-
-
-
-
-</script>
-
-<script type="text/template" id="order-template">
-
 </script>
 
 

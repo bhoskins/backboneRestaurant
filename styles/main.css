@@ -21,24 +21,13 @@ a, li, ul, h1, h2, h3, h4, h5, h6 {
   list-style: none;
   text-decoration: none; }
 
-.neat-container {
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  margin-bottom: 40px; }
-  .neat-container::after {
-    clear: both;
-    content: "";
-    display: table; }
+.cook-order {
+  visibility: hidden; }
 
-.row {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 100%; }
-  .row:last-child {
-    margin-right: 0; }
+.neat-container {
+  margin: 0 auto;
+  max-width: 90%;
+  margin-bottom: 40px; }
 
 .tab {
   width: 16%; }
@@ -57,13 +46,6 @@ a, li, ul, h1, h2, h3, h4, h5, h6 {
   color: navy;
   margin: 10px;
   padding: 5px; }
-
-.filter-heading {
-  margin: 0;
-  padding: 5px; }
-
-.filter-heading:hover {
-  cursor: hand; }
 
 .header-title,
 .header-subtitle {
@@ -111,6 +93,18 @@ nav {
 /**********************
   Menu Below
   *********************/
+.filter-heading {
+  margin: 0;
+  padding: 5px; }
+
+.filter-heading:hover {
+  cursor: pointer;
+  cursor: hand; }
+
+.filter-wrap {
+  visibility: hidden;
+  margin-bottom: 10px; }
+
 .menu-header-ul li {
   display: inline-block;
   text-align: center;
@@ -122,7 +116,9 @@ nav {
   border-left: 3px solid teal;
   color: navy;
   vertical-align: top;
-  line-height: 50px; }
+  line-height: 50px;
+  cursor: pointer;
+  cursor: hand; }
 
 .menu-header-wrap {
   position: relative;
@@ -189,11 +185,23 @@ nav {
 .order-item-price {
   width: 5%; }
 
+.customize-item {
+  margin-left: 18%;
+  margin-top: 5px; }
+
+.customize-label {
+  color: red;
+  cursor: pointer;
+  cursor: hand; }
+
+#customize-input {
+  visibility: hidden; }
+
 .order-total {
   margin-top: 20px;
   margin-left: 80%; }
 
-.submit-order {
+.submit-button {
   display: block;
   margin: 10px auto;
   width: 200px;
@@ -202,5 +210,24 @@ nav {
   background: teal;
   color: white;
   font-size: 1em; }
+
+.order-extra {
+  visibility: hidden; }
+
+/*************************************************
+    Customer Order Page Below
+*************************************************/
+.page-wrap {
+  position: relative;
+  margin: 0 auto;
+  max-width: 90%; }
+
+.heading-time-placed {
+  position: absolute;
+  right: 0; }
+
+.time-order-completed {
+  text-align: center;
+  color: red; }
 
 /*# sourceMappingURL=main.css.map */

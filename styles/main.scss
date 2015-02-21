@@ -29,21 +29,26 @@ a, li, ul, h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
+// .menu-wrap, .customer-order-wrap, cook-order-wrap
+
+.cook-order {
+  visibility: hidden;
+}
+
 .neat-container {
-  @include outer-container;
-  width: $max-width;
+  //@include outer-container;
+  margin: 0 auto;
+  max-width: $max-width;
   margin-bottom: 40px;
 
 }
 
 .row {
-  @include span-columns(12);
-
+  //@include span-columns(12);
 }
 
 .tab {
   width: 16%;
-
 }
 
 .menu-header-ul li:last-child {
@@ -62,15 +67,6 @@ a, li, ul, h1, h2, h3, h4, h5, h6 {
   color: $secondary-color;
   margin: 10px;
   padding: 5px;
-}
-
-.filter-heading {
-  margin: 0;
-  padding: 5px;
-}
-
-.filter-heading:hover {
-  cursor: hand;
 }
 
 .header-title,
@@ -128,6 +124,21 @@ nav {
 /**********************
   Menu Below
   *********************/
+.filter-heading {
+  margin: 0;
+  padding: 5px;
+}
+
+.filter-heading:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.filter-wrap {
+  visibility: hidden;
+  margin-bottom: 10px;
+}
+
 
 .menu-header-ul li {
   display: inline-block;
@@ -141,6 +152,8 @@ nav {
   color: $secondary-color;
   vertical-align: top;
   line-height: $tab-height;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .menu-header-wrap {
@@ -225,12 +238,27 @@ margin-left: 1%;
   width: 5%;
 }
 
+.customize-item {
+  margin-left: 18%;
+  margin-top: 5px;
+}
+
+.customize-label {
+  color: $highlight-color;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#customize-input {
+  visibility: hidden;
+}
+
 .order-total {
   margin-top: 20px;
   margin-left: 80%;
 }
 
-.submit-order {
+.submit-button {
   display: block;
   margin: 10px auto;
   width: 200px;
@@ -239,6 +267,29 @@ margin-left: 1%;
   background: $primary-color;
   color: $button-text-color;
   font-size: $button-font-size;
+}
+
+.order-extra {
+  visibility: hidden;
+}
+
+/*************************************************
+    Customer Order Page Below
+*************************************************/
+.page-wrap {
+  position: relative;
+  margin: 0 auto;
+  max-width: $max-width;
+}
+
+.heading-time-placed {
+  position: absolute;
+  right: 0;
+}
+
+.time-order-completed {
+  text-align: center;
+  color: $highlight-color;
 }
 
 
