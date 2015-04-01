@@ -1,0 +1,299 @@
+Notes 2/23 Monday
+
+hacker news
+html5 pushState
+  routers allow # routes or pushState routes
+  pushState can change url by js
+    or listen to url changes without loading page
+hash - was only way to change url without reloading page
+
+pushState - a newer way to do it.
+  gives a hack list url
+  is an objec you add to history.start9
+
+  Backbone.history.start({pushStart: true})
+
+  problem with pushStart:
+    sends a request to a web server
+      for a file named index.html or
+          whatever the first page is
+          back button creates 404 not found
+          unless on a server that supports pushStart
+          have to add patches
+
+  #url doesn't take place till after page loads
+  go into Backbone.history and find the index.html file
+
+  # - does not ask for afile
+    but not seo friendly
+  pushState is seo friendly, but must be on server
+    that supports pushState.
+
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      Template Review
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Start with a string @@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  var templateString = "<h1>Cool</h1>";
+     " <%= name %>"
+
+  use script tags with strings in them to use for template
+    1. to separate concerns. template
+    2. looks like html; a cognitive tool, easier to look at
+
+  Make a template - function @@@@@@@@@@@@@@@@@@@@@@@@@
+
+  pass in data: js object;
+  returns a string
+
+  var template = _.template(templateString);
+  template is a function
+    returns a string.
+
+    var templateString = "<h1<%= title %></h1>"
+    var template = _.template(templateString);
+    template()
+    undefined.
+    template({title: "cool"});
+    returns "<h1>Cool</h1>"
+
+    var data = {name: 'Cool'}
+    template(this.model.toJSON())
+    model.toJSON()
+        turns it into Object {title: 'Cool'}
+
+    It's a copy; model.attribute is not
+
+    template(model.toJSON)
+      undefined
+
+    template(model.toJSON())
+
+    a functions length is how many params it has
+
+@@@@@@@
+    object passed to template must have same
+      same property names as in script
+      or will get undefined.
+      All of them, exactly the same
+      Object can have more different properties;
+        but script can not have any that are not referenced in model/object
+@@@@@@@@@
+
+
+var templateString = "<h1>Cool</h1>"
+
+template: _.template
+
+$('body').html(template);
+
+.html(string)   replaces with string
+.html(function)  invokes function
+
+@@@@@@@@@@@@@@
+No!!!!!!!!
+$('body').html(template);
+Yes!!!!!!!
+$('body').html(template());
+@@@@@@@@@@@@@@
+
+Majestic Thai Go through
+
+react or flux;
+Data down, events up
+Data is always at the top of your application
+
+forms can create models, but others should not;
+
+should not be creating children if they are not in a\ \   view
+
+Establish hierarchy of views
+
+
+Wireframe:
+Domain Models
+Views Top Level
+  where they are getting data
+
+Events Up;
+  in events do not make new views
+    refers to model events.
+    Change in DOM
+
+Define changes available:
+click on add button it should show up on Order
+  click on remove remove from order
+
+Place Order
+
+when i click on appetizers the selected category
+  should change the selected category
+    and the user should see the appetizers list
+
+Change click to add button;
+  add item to order
+  or pass order down to this view
+
+
+    One view does not tell other views to render
+
+Other views listen for events and then render.
+
+@@@@@@@@@@@@@@@ 1. router and setup
+Set up router
+
+var AppRouter = B>R.ex
+  routes:
+    "": index
+    'catetory/:name': 'showCategory'
+
+  index:
+
+  showCategory
+
+  document.ready
+  window.App.
+  B.h.start()
+@@@@@@@@@@@@@ 2. set up templates
+in html <script
+body>
+  <nav .js-primary-nav
+    <h1 Majestic Thai
+    <ul
+
+</ul>
+</nav>
+
+div .js-category-view
+  ,/div
+
+div .js-order-view
+  </div
+
+<script #category-template
+
+  <h1>Appetizers</h1
+  <ul>
+  </ul
+
+<script #item-template
+  <h2>Cool Food</h2>
+  <h3>$1</h3>
+  <button>Ad to Order</button
+
+  <script #order-template
+    <Order</h1>
+    <ul>
+      <li>placeholder for testing</li>
+    </ul
+    <p>Total Price: $1</p>
+
+<script #order-item-template
+  <h2>Cool Food</h2>
+  <h3>$1</h3>
+  <button>Xr</button
+
+back to main.js
+
+var AppRouter = B>R.ex
+  routes:
+    "": index
+    'catetory/:name': 'showCategory'
+
+  index:
+    var catetoryTemplate = _.template($('#category-emplate').text());
+    $('.js-categoru-view').html(categoryTemplate());
+
+    same thing for other three templates
+
+  showCategory
+
+  doc.ready
+    appRouter = new AppRother();
+
+Make sure static templates are working.
+
+@@@@@@@@@@@@ 3. Create Views @@@@@@@@@@@@@@@@@@@@@
+
+Top level first; start instance in router.initialize
+index.initialize:
+  this.categoryView = new CategoryView({el: '.js-category-view'})
+  this.orderView = new OrderView({})
+  this.navView = new NavView({})
+
+var CategoryView = B.V.ex
+
+
+var OrderView = B.V.ex
+
+
+var NavView = B.V.ex
+
+******* Move template from router to views
+  then append to Dom in
+
+Views:
+  create, call and render
+
+Where to attach to DOM
+router.initialize tell where to attach to DOM
+  this.categoryView = new CategoryView({el: '.js-category-view'})
+
+Create an instance
+router.index:
+  this.categoryView = new CategoryView({el:})
+  this.orderView = new OrderView
+
+  In View:
+Put template here and
+render:
+  this.$el.html(this.template());
+
+
+Summary: move templates to views;
+  create instances of top level views in
+    router.index
+    attach to DOM, define el in router.initialize
+@@@@@@@@@@@ Newxt
+
+Child views:
+
+var CategoryView = B.V.ex
+template:
+render: func
+  var self = this;
+  this.$el.html(this.template())
+  this.children = this.collection.map(function(item){
+    var view = new ItemView({model: item});
+    self.$('ul').append(view.render().el)
+    return view;
+  });
+  return this;
+  }
+  });
+
+
+var ItemView = B.V.ex
+  tagName: 'li',
+  teplate: _.template($('#item-template').text()),
+
+  render: func
+
+create instance in router.index
+
+this.items = new B.Collection({name: "Gool Food", pirde: 3}) to test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

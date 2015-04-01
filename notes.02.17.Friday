@@ -49,6 +49,9 @@ var AppRouter
   index: funciton
     var template = _.template( $('#index-template').text())
     $('.app-container').html(template())
+
+
+
   login:
   signup:
 

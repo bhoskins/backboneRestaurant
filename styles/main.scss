@@ -11,6 +11,11 @@ $secondary-color: navy;
 $highlight-color: red;
 $button-text-color: white;
 
+$tab-on-border-color: $primary-color;
+$tab-on-background-color: #fff;
+$tab-off-border-color: #06fffa;
+$tab-off-background-color: #06fffa;
+
 $button-font-size: 1em;
 
 /*************************
@@ -20,6 +25,7 @@ $button-font-size: 1em;
 body {
   margin: 0 auto;
   padding: 0;
+  width: 80%;
 }
 
 a, li, ul, h1, h2, h3, h4, h5, h6 {

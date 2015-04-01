@@ -58,34 +58,39 @@
 
       <div class="tabs row">
         <ul class="row menu-header-ul">
-          <li class="tab tab1">Appetizers</li><li class="tab">
-          Entree</li><li class="tab">
-          Salads</li><li class="tab">
-          Sides</li><li class="tab">
-          Desserts</li><li class="tab last-tab">
+          <li class="tab appetizers-tab js-appetizers-tab">Appetizers</li><li class="tab js-entrees-tab">
+          Entree</li><li class="tab js-salads-tab">
+          Salads</li><li class="tab js-sides-tab">
+          Sides</li><li class="tab js-desserts-tab">
+          Desserts</li><li class="tab js-kids-tab last-tab">
           Kids</li>
 
         </ul>
 
 
-      <div class="js-appetizers appetizers menu-cat row">
+
         <div class="menu-header-wrap">
           <h4 class="menu-subtitle heading-order">Order</h4>
           <h4 class="menu-subtitle heading-item">Item</h4>
           <h4 class="menu-subtitle heading-price">Price</h4>
         </div><!-- .menu-header-wrap -->
 
-        <ul class="js-menu-ul menu-ul row">
+<!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        Appetizers/Entrees/Salads/Sides/Kids MenuView
+        this.$el.append($('.js-appetizers'))
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+      <div class="js-appetizers-div appetizers-div menu-cat row">
+<!--         <ul class="js-menu-ul menu-ul row">
 
-        </ul>
+            </ul> -->
 
-      </div><!-- .js-appetizers -->
+    </div> <!-- .js-appetizers -->
 
-      <div class="menu-cat js-entree entree row"></div>
-      <div class="menu-cat js-salads salads row"></div>
-      <div class="menu-cat js-sides sides row"></div>
-      <div class="menu-cat js-desserts desserts row"></div>
-      <div class="menu-cat js-kids kids row"></div>
+      <div class="menu-cat js-entrees-div entrees-div row"></div>
+      <div class="menu-cat js-salads-div salads-div row"></div>
+      <div class="menu-cat js-sides-div sides-div row"></div>
+      <div class="menu-cat js-desserts-div desserts-div row"></div>
+      <div class="menu-cat js-kids-div kids-div row"></div>
 
      </div><!-- .tabs -->
 
@@ -158,17 +163,21 @@
       Templates Below
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
 
-<script type="text/template" id="menu-template">
-    <li>
+
+
+<script type="text/template" class="menu-item-template">
+
+
       <input type="checkbox" id="order-button" class="menu-line
       order-button">
       <h3 class="food-item js-food-item">
-        Wings</h3>
+        <%= itemName %></h3>
       <h3 class="js-food-price food-price">
-        8</h3>
+        <%= itemPrice %>
+        </h3>
         <div class="divider"></div>
         <h3 class="foodDesc js-foodDesc">
-          Traditional bone in wings; mild, medium or hot. Served with celery and blue cheese dressing
+          <%= itemDesc %>
           <div class="js-order-extra order-extra wings-extra">
             <input type="radio" name="wing-type" value="mild" id="wing-type-mild">
             <label for="wing-type-mild">Mild</label>
@@ -177,13 +186,13 @@
             <input type="radio" name="wing-type" value="hot" id="wing-type-hot">
             <label for="wing-type-hot">Hot</label>
           </div>
-          </h3>
-      </li>
+        </h3>
+
 </script>
 
 
 <script type="text/template" id="customer-order-template">
-  <li>
+
     <input type="number" value="1" class="js-item-qty item-qty" min="0">
     <h3 class="order-item js-order-item">
     Wings</h3>
@@ -194,21 +203,22 @@
       <input type="text" id="customize-input" size="100">
     </div>
 
-  </li>
+
 </script>
 
 
 <script type="text/template" id="cook-order-template">
-        <li>
+
         <input type="checkbox" class="js-item-complete item-complete">
         <h3 class="order-item js-order-item">
-        Wings</h3>
+        Wings
+        </h3>
       <h3 class="js-order-item-price order-item-price">
         8</h3>
         <p class="customer-comment js-customer-comment">
         </p>
 
-      </li>
+
 </script>
 
 

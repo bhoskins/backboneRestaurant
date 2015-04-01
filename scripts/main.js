@@ -3,6 +3,12 @@
 
   window.App = window.App || {};
 
+  var results;
+  var templateAppetizers = {};
+  var templateEntrees = {};
+  var templateSides = {};
+  var templateSalads = {};
+  var templateKids = {};
   /*****************************************
     Models/Collections
 ******************************************/
@@ -16,7 +22,7 @@ var MenuModel = Backbone.Model.extend({
     itemPrice: '',
     itemtype: '',
     itemAllergens: ''
-  }
+  },
 
 });
 
@@ -25,13 +31,33 @@ var MenuCollection = Backbone.Collection.extend({
   parse: function(response){
     response.results;
   },
-  initialize: function(){
-    var data = this.fetch();
-    console.log("menucollection: " + data )
-  }
+initialize: function() {
+  this.fetch().done(function(data) {
+    window.App.menuData = data.results;
+    results = data.results;
+    console.log("Got the data! It's here:");
+    console.log(data);
+    _.each(data.results, function(item, index){
+      if(item.itemtype === 'appetizer'){
+        console.log('name is ' + item.itemName);
+        var itemName = item.itemName;
+        var itemPrice = item.itemPrice;
+        var itemDesc = item.itemDesc;
+        templateAppetizers = templateAppetizers + {
+          itemName: itemName,
+          itemPrice: itemPrice,
+          itemDesc: itemDesc
+        }
 
+      }else{
+        return;
+      }
+      });
+    });
+}
 
-});
+  });
+
 
 var Session = Backbone.Model.extend({
   defaults: {
@@ -78,28 +104,148 @@ var Session = Backbone.Model.extend({
 /*****************************************
     Views
 ******************************************/
-var MenuView = Backbone.View.extend({
+var IndexView = Backbone.View.extend({
   initialize: function(){
-    // this.menuView = new MenuView({collection: this.collection});
+    console.log('first indexView fired');
+    this.appetizersView = new AppetizersView({collection: this.collection});
+    this.entreesView = new EntreesView({collection: this.collection});
+    this.saladsView = new SaladsView({collection: this.collection});
+    this.sidesView = new SidesView({collection: this.collection});
+    this.kidsView = new KidsView({collection: this.collection});
+
+    this.customerOrderView = new CustomerOrderView({collection: this.collection});
+
+    this.appetizersView.render();
 
   },
-  template: _.template( $('#menu-template').text() ),
   render: function(){
-    this.$el.append(this.template());
-     console.log('menu view just fired');
+    $('.js-appetizers').css('visibility', 'visible');
+    $('.js-customer-order-wrap').css('visibility', 'visible');
+    $('.js-cook-order-wrap').css('visibility', 'hidden');
+    $('.js-entrees', '.js-salads', '.js-sides',
+      '.js-kids').css('visibility', 'hidden');
+
+    this.appetizersView.render();
+    $('.js-appetizers-div').append(this.appetizersView.el)
+
+    this.customerOrderView.render();
+    $('.js-customer-order-ul').append(this.customerOrderView.el);
+
+  }
+
+});
+
+var AppetizersView = Backbone.View.extend({
+  tagName: 'ul',
+
+  initialize: function(){
+    // this.listenTo(this.collection, 'sync', this.render);
+
+    var menu = new MenuCollection();
+    this.$el.empty();
+    var self = this;
+
+    menu.fetch().done(function(data) {
+
+      _.each(data.results, function(item){
+        if( item.itemtype === 'appetizer'){
+        console.log('the appetizer name is ' + item.itemName);
+        console.log('itemPrice ' + item.itemPrice);
+        var appetizerItemView = new AppetizerItemView();
+        var templateObject = {itemName: 'wings'};
+
+        // {itemName: item.itemName,
+        //   itemPrice: item.itemPrice,
+        //   itemDesc: item.itemDesc};
+
+        appetizerItemView.render((templateObject));
+
+        self.$el.append(self.$el);
+        }else {
+        return;
+        }
+      });
+    });
+
+  },
+  events: {
+    "click .js-appetizers-tab": "tabOn",
+  },
+  tabOn: function(){
+        $('.js-appetizer-tab').css({
+      'border-top': '3px solid $tab-on-border-color',
+      'border-right': '3px solid $tab-on-border-color',
+      'border-left': '3px solid $tab-on-border-color',
+      'background-color': '$tab-on-background-color'
+    });
+    $('.js-entrees-tab, .js-salads-tab, .js-sides-tab, .js-desserts-tab, .js-kids-tab').css({
+      'border-top': '3px solid #06fffa',
+      'border-right': '3px solid $tab-off-border-color',
+      'border-left': '3px solid $tab-off-border-color',
+      'border-bottom': '3px solid teal',
+      'background-color': '$tab-off-background-color'
+    });
+  },
+  render: function(){
+
+    // this.$el.empty();
+    this.$el.html(this.template(templateObject));
+
+
+    $('.js-appetizer-tab').css({
+      'border-top': '3px solid $tab-on-border-color',
+      'border-right': '3px solid $tab-on-border-color',
+      'border-left': '3px solid $tab-on-border-color',
+      'background-color': '$tab-on-background-color'
+    });
+    $('.js-entrees-tab, .js-salads-tab, .js-sides-tab, .js-desserts-tab, .js-kids-tab').css({
+      'border-top': '3px solid #06fffa',
+      'border-right': '3px solid $tab-off-border-color',
+      'border-left': '3px solid $tab-off-border-color',
+      'border-bottom': '3px solid teal',
+      'background-color': '$tab-off-background-color'
+    });
+  }
+});
+
+var EntreesView = Backbone.View.extend({
+  tagName: 'ul'
+});
+
+var SaladsView = Backbone.View.extend({
+  tagName: 'ul'
+});
+
+var SidesView = Backbone.View.extend({
+  tagName: 'ul'
+});
+
+var KidsView = Backbone.View.extend({
+  tagName: 'ul'
+});
+
+var AppetizerItemView = Backbone.View.extend({
+  tagName: 'li',
+  template:  _.template( $(".menu-item-template").text() ),
+  render: function(){
+    this.$el.html(this.template({itemName: "Wings", itemPrice: 8, itemDesc: "Great wings"}));
     return this;
   }
 });
 
 var CustomerOrderView = Backbone.View.extend({
-  template: _.template( $('#customer-order-template').text() ),
-  render: function(){
-    this.$el.append(this.template());
-    console.log('customer order view just fired');
+  el: 'ul',
+  template: _.template( $('#customer-order-template').text() )
+  // render: function(){
+  //   this.$el.append(this.template());
+  //   console.log('customer order view just fired');
 
+  //   return this;
+  // }
+});
 
-    return this;
-  }
+var CustomerOrderListView = Backbone.View.extend({
+  //el: 'li',
 });
 
 var CookOrderView = Backbone.View.extend({
@@ -116,40 +262,29 @@ var CookOrderView = Backbone.View.extend({
 var AppRouter = Backbone.Router.extend({
   routes: {
     "": 'index',
-    "customerOrder": "customerOrder",
     "cookOrder": "cookOrder",
     "admin": "admin"
   },
   initialize: function(){
-    var menuCollection = new MenuCollection({model: MenuModel});
-    var data = menuCollection.fetch();
-    // _.each(data, function(item, index){
-    //   console.log(item + " " + index);
-    // });
-
-    console.log("the item is: " + data );
+    this.menu = new MenuCollection({model: MenuModel});
+    // this.indexView = new IndexView({
+    //   collection: this.menu});
 
   },
   index: function(){
-    this.currentView = new MenuView();
-    this.currentView.render({el: '.js-menu-ul'});
+    this.menu.fetch();
+    this.currentView = new IndexView({collection: MenuCollection});
+    this.currentView.render();
+
+
     var customerOrderView = new CustomerOrderView();
     customerOrderView.render({el: '.js-customer-order-ul'});
     //$('.js-menu-ul').html???
-    $('.js-menu-wrap').css('visibility', 'visible');
-    $('.js-customer-order-wrap').css('visibility', 'visible');
-    $('.js-cook-order-wrap').css('visibility', 'hidden');
+
 
 
 
 },
-  customerOrder: function(){
-    // var template = _.template( $('#customer-order-template').text() );
-    // $('.js-customer-order-ul').append(template());
-    $('.js-menu-wrap').css('visibility', 'visible');
-      $('.js-customer-order-wrap').css('visibility', 'visible');
-      $('.js-cook-order-wrap').css('visibility', 'hidden');
-  },
   cookOrder: function(){
     var template = _.template( $('#cook-order-template').text() );
     $('.js-cook-order-ul').append(template());
